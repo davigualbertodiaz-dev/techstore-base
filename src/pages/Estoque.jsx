@@ -1,7 +1,14 @@
 // Página usada pelo time de estoque para acompanhar a quantidade de cada produto
-export default function Estoque({ produtos }) {
+export default function Estoque({ produtos, listaEspera = [] }) {
   // slice cria uma cópia, para o sort não alterar a lista original
   const ordenados = produtos.slice().sort((a, b) => a.estoque - b.estoque)
+  const esperasPorProduto = listaEspera.reduce((acumulador, item) => {
+    if (!acumulador[item.produtoId]) {
+      acumulador[item.produtoId] = []
+    }
+    acumulador[item.produtoId].push({ nome: item.nome, email: item.email })
+    return acumulador
+  }, {})
 
   return (
     <section>
@@ -36,6 +43,34 @@ export default function Estoque({ produtos }) {
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="lista-espera-panel">
+        <h2>Lista de espera</h2>
+        {Object.keys(esperasPorProduto).length > 0 ? (
+          <div className="lista-espera-grid">
+            {Object.entries(esperasPorProduto).map(([produtoId, clientes]) => {
+              const produto = produtos.find((item) => item.id === produtoId)
+              if (!produto) return null
+
+              return (
+                <div key={produtoId} className="lista-espera-item">
+                  <h3>{produto.title}</h3>
+                  <ul>
+                    {clientes.map((cliente, index) => (
+                      <li key={`${produtoId}-${cliente.email}-${index}`}>
+                        <strong>{cliente.nome}</strong>
+                        <span>{cliente.email}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })}
+          </div>
+        ) : (
+          <p className="painel-vazio">Nenhum cliente está na lista de espera.</p>
+        )}
       </div>
     </section>
   )

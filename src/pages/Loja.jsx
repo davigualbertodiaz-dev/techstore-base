@@ -11,13 +11,17 @@ const CATEGORIAS = [
 
 export default function Loja({ produtos, onAdicionar }) {
   const [categoria, setCategoria] = useState('todas')
-  const [produtosVisiveis, setProdutosVisiveis] = useState(produtos)
+  const [produtosVisiveis, setProdutosVisiveis] = useState([])
 
   useEffect(() => {
+    const produtosDisponiveis = produtos.filter((produto) => produto.estoque > 0)
+
     if (categoria === 'todas') {
-      setProdutosVisiveis(produtos)
+      setProdutosVisiveis(produtosDisponiveis)
     } else {
-      setProdutosVisiveis(produtos.filter((produto) => produto.category === categoria))
+      setProdutosVisiveis(
+        produtosDisponiveis.filter((produto) => produto.category === categoria)
+      )
     }
   }, [categoria, produtos])
 
@@ -42,9 +46,13 @@ export default function Loja({ produtos, onAdicionar }) {
       </div>
 
       <div className="grade">
-        {produtosVisiveis.map((produto) => (
-          <ProdutoCard key={produto.id} produto={produto} onAdicionar={onAdicionar} />
-        ))}
+        {produtosVisiveis.length > 0 ? (
+          produtosVisiveis.map((produto) => (
+            <ProdutoCard key={produto.id} produto={produto} onAdicionar={onAdicionar} />
+          ))
+        ) : (
+          <p className="estado-vazio">Nenhum produto disponível nesta categoria.</p>
+        )}
       </div>
     </section>
   )

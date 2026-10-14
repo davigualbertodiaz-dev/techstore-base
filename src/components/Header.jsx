@@ -14,6 +14,9 @@ export default function Header({ clienteAtual }) {
           <NavLink to="/" end className="nav-link">
             Loja
           </NavLink>
+          <NavLink to="/painel-logista" className="nav-link nav-link-interna">
+            Painel de Logista
+          </NavLink>
           <NavLink to="/estoque" className="nav-link nav-link-interna">
             Área interna
           </NavLink>

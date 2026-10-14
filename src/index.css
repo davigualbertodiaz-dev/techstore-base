@@ -395,7 +395,7 @@ h2 {
   font-size: 0.85rem;
 }
 
-.preco-original + .preco {
+.preco-original+.preco {
   color: var(--cor-destaque);
 }
 
@@ -622,7 +622,7 @@ h2 {
   padding: var(--espaco-4);
 }
 
-.item-carrinho + .item-carrinho {
+.item-carrinho+.item-carrinho {
   border-top: 1px solid var(--cor-borda);
 }
 
@@ -785,6 +785,164 @@ h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Painel do lojista */
+
+.painel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--espaco-4);
+  margin-bottom: var(--espaco-6);
+}
+
+.painel-card {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+}
+
+.painel-card-destaque {
+  background: linear-gradient(135deg, #f8efe9, #fff);
+  border-color: rgba(217, 69, 43, 0.2);
+}
+
+.painel-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+
+.painel-card strong {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: -0.03em;
+}
+
+.painel-bloco {
+  margin-top: var(--espaco-6);
+}
+
+.painel-dupla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--espaco-5);
+}
+
+.lista-espera-box {
+  background: #fffaf7;
+  border: 1px solid rgba(217, 69, 43, 0.22);
+  border-radius: var(--raio);
+  padding: var(--espaco-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+}
+
+.lista-espera-titulo {
+  margin: 0;
+  font-weight: 800;
+  color: var(--cor-destaque);
+}
+
+.lista-espera-form {
+  display: grid;
+  gap: var(--espaco-3);
+}
+
+.lista-espera-form input {
+  width: 100%;
+  padding: var(--espaco-3);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+  background: var(--cor-superficie);
+}
+
+.mensagem-espera {
+  margin: 0;
+  color: var(--cor-frete);
+  font-weight: 600;
+}
+
+.lista-espera-panel {
+  margin-top: var(--espaco-7);
+}
+
+.lista-espera-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--espaco-4);
+}
+
+.lista-espera-item {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-4);
+}
+
+.lista-espera-item h3 {
+  margin: 0 0 var(--espaco-3);
+  font-size: 1rem;
+}
+
+.lista-espera-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--espaco-2);
+}
+
+.lista-espera-item li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  font-size: 0.9rem;
+}
+
+.painel-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--espaco-3);
+}
+
+.painel-lista li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espaco-3);
+  align-items: center;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+  padding: var(--espaco-3) var(--espaco-4);
+}
+
+.painel-lista li span {
+  font-weight: 600;
+}
+
+.painel-lista li small {
+  color: var(--cor-texto-suave);
+}
+
+.painel-vazio {
+  margin: 0;
+  color: var(--cor-texto-suave);
+}
+
+.painel-tabela-moldura {
+  overflow-x: auto;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
 }
 
 /* Estoque */
